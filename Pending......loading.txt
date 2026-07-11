@@ -1,0 +1,11 @@
+completed the skills
+
+nmap
+metasploit
+wireshark
+splunk
+pfsense
+linux
+python
+frontend
+backend
