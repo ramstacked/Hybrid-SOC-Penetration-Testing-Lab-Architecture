@@ -1,0 +1,178 @@
+                    +-----------------------------+
+                    | HTML + CSS + JavaScript UI  |
+                    |  Red Team Dashboard         |
+                    +-------------+---------------+
+                                  |
+                            HTTP / REST API
+                                  |
+                    +-------------v--------------+
+                    |     Python Backend         |
+                    |    (Flask / FastAPI)       |
+                    +-------------+--------------+
+                                  |
+      +-------------+-------------+-------------+--------------+
+      |             |             |             |              |
+      |             |             |             |              |
++-----v----+  +-----v-----+ +-----v------+ +----v-----+ +------v------+
+|   Nmap   |  | Metasploit| | Wireshark  | | pfSense  | |   MongoDB   |
+| Automation| | RPC/API    | | PCAP Logs  | | API/Logs | | Scan Results |
++-----+----+  +-----+-----+ +------+-----+ +----+-----+ +------+------+
+      |             |               |             |              |
+      +-------------+---------------+-------------+--------------+
+                                    |
+                          +---------v---------+
+                          | Target Machines   |
+                          | Windows / Linux   |
+                          | Metasploitable    |
+                          | DVWA              |
+                          +-------------------+
+
+
+Project Workflow
+User Login
+      ↓
+Add Target IP
+      ↓
+Run Nmap Scan
+      ↓
+Store Scan Results
+      ↓
+Choose Exploit
+      ↓
+Launch Metasploit
+      ↓
+Meterpreter Session
+      ↓
+Collect Evidence
+      ↓
+Capture Traffic (Wireshark)
+      ↓
+View Firewall Logs (pfSense)
+      ↓
+Generate Report
+Python Responsibilities
+Run Nmap scans (python-nmap or subprocess)
+Control Metasploit via the MSFRPC API
+Parse XML/JSON scan results
+Read Wireshark PCAP files (e.g., with Scapy or PyShark)
+Retrieve pfSense logs/API data
+Store data in MongoDB
+Expose REST APIs for the dashboard
+Generate PDF reports
+
+This architecture is realistic for an intern portfolio because it demonstrates integration of offensive security tools into a single application without trying to build a full command-and-control framework.
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Using **only Metasploitable 2** is actually a good choice for an **intern-level Red Team project** because it contains many intentionally vulnerable services.
+
+# Project Name
+
+**Red Team Attack Dashboard using Metasploitable 2**
+
+## Overall Architecture
+
+```text
+                           ┌──────────────────────────┐
+                           │   HTML • CSS • JS        │
+                           │  Red Team Dashboard      │
+                           └──────────┬───────────────┘
+                                      │
+                              HTTP / REST API
+                                      │
+                           ┌──────────▼──────────┐
+                           │    Python Backend   │
+                           │   (Flask/FastAPI)   │
+                           └──────────┬──────────┘
+                                      │
+        ┌─────────────────────────────┼────────────────────────────┐
+        │                             │                            │
+        ▼                             ▼                            ▼
+    Nmap Scanner              Metasploit Engine            Report Generator
+        │                             │                            │
+        └─────────────────────────────┼────────────────────────────┘
+                                      │
+                               Save Scan Results
+                                      │
+                                  SQLite/MongoDB
+                                      │
+                                      ▼
+                             Kali Linux Attacker
+                                      │
+                               pfSense Firewall
+                                      │
+                              Metasploitable 2 VM
+```
+
+---
+
+# Project Workflow
+
+```text
+Start Dashboard
+       │
+       ▼
+Enter Target IP
+       │
+       ▼
+Run Nmap Scan
+       │
+       ▼
+Display Open Ports
+       │
+       ▼
+Select Service
+       │
+       ▼
+Choose Metasploit Module
+       │
+       ▼
+Launch Exploit
+       │
+       ▼
+Open Meterpreter Session
+       │
+       ▼
+Basic Post Exploitation
+       │
+       ▼
+Collect Evidence
+       │
+       ▼
+Generate Report
+```
+
+---
+
+# Dashboard Features
+
+* Login
+* Target Management
+* Nmap Scan
+* Open Ports
+* Service Information
+* Exploit Selection
+* Exploit Execution
+* Active Sessions
+* Meterpreter Information
+* Evidence Collection
+* Report Generation
+
+---
+
+# Tools Used
+
+* Kali Linux
+* Metasploitable 2
+* Nmap
+* Metasploit Framework
+* Python (Flask or FastAPI)
+* HTML
+* CSS
+* JavaScript
+* SQLite or MongoDB
+
+This scope is appropriate for an intern: one attacker machine (Kali), one vulnerable target (Metasploitable 2), and a custom Python web application that orchestrates scanning, exploitation, and reporting. It demonstrates practical red team workflow without becoming too large or complex.
+
+
+
+
+
